@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: community-care-queue
+    runtime: python
+    plan: starter
+    buildCommand: python -m py_compile server.py
+    startCommand: python server.py
+    healthCheckPath: /api/queue
+    disk:
+      name: clinic-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      - key: DATABASE_PATH
+        value: /var/data/clinic.db
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true

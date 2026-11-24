@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta name="description" content="Register for a community clinic visit and follow your place in the queue.">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <title>CommunityCare — a calmer clinic visit</title>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CommunityCare home">
+      <span class="brand-mark" aria-hidden="true">+</span>
+      <span>community<span class="brand-light">care</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#camps">Health camps</a>
+      <a href="#queue">Live queue</a>
+      <a href="#register">Get a token</a>
+    </nav>
+    <button class="button button-outline staff-open" type="button">Admin sign in <span aria-hidden="true">↗</span></button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot"></span> COMMUNITY HEALTH, MADE EASIER</p>
+        <h1>Care that meets you<br>where <em>you are.</em></h1>
+        <p class="hero-description">Spend less time waiting and more time looking after yourself. Get your clinic token before you arrive, then follow the queue from your phone.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#register">Get a queue token <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="#check-token">Check a token <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-note"><span class="check-mark">✓</span> Free to use <span class="note-divider"></span> No app download needed</div>
+      </div>
+      <div class="hero-art" aria-label="A welcoming community health clinic illustration">
+        <div class="sun-disc"></div>
+        <div class="art-label"><span class="art-label-dot"></span> HERE FOR YOUR HEALTH</div>
+        <div class="clinic-building">
+          <div class="building-roof"></div>
+          <div class="building-front">
+            <div class="building-sign"><span class="brand-mark mini">+</span><span>community care</span></div>
+            <div class="building-window window-left"><span></span></div>
+            <div class="building-door"><span>WELCOME</span></div>
+            <div class="building-window window-right"><span></span></div>
+          </div>
+          <div class="building-steps"></div>
+        </div>
+        <div class="plant plant-one"><i></i><i></i><i></i><b></b></div>
+        <div class="plant plant-two"><i></i><i></i><i></i><b></b></div>
+        <div class="art-sticker"><span>✳</span><div>Good health<br>starts here.</div></div>
+        <div class="art-caption"><span class="caption-icon">✚</span><span>Care close to home<br><b>Everyone is welcome</b></span></div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Service details">
+      <div><span class="strip-icon">◎</span><span><b>Simple registration</b><small>Just a few details to get started</small></span></div>
+      <div><span class="strip-icon">⌁</span><span><b>Know before you go</b><small>See your place in the queue</small></span></div>
+      <div><span class="strip-icon">♡</span><span><b>Care for everyone</b><small>Community clinic services</small></span></div>
+    </section>
+
+    <section class="section camps-section" id="camps">
+      <div class="section-heading">
+        <div><p class="eyebrow">OUT IN THE COMMUNITY</p><h2>Health camps <em>near you</em></h2></div>
+        <span class="quiet-badge"><span class="live-dot"></span> Updates from your clinic</span>
+      </div>
+      <div class="camp-list" id="camp-list" aria-live="polite">
+        <div class="camp-card"><div class="camp-icon" aria-hidden="true">✚</div><div><h3>Loading camp schedule…</h3><p>Verified camp dates and locations will appear here.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section queue-section" id="queue">
+      <div class="section-heading">
+        <div><p class="eyebrow">KNOW BEFORE YOU GO</p><h2>The queue, <em>right now.</em></h2></div>
+        <span class="updated-label"><span class="live-dot"></span> Updates automatically</span>
+      </div>
+      <div id="queue-board" class="queue-grid" aria-live="polite">
+        <div class="loading-card">Loading today's queue…</div>
+      </div>
+      <p class="offline-notice" id="queue-offline" hidden>Showing the last queue update saved on this device.</p>
+    </section>
+
+    <section class="section register-section" id="register">
+      <div class="register-intro">
+        <p class="eyebrow">YOUR VISIT, YOUR PACE</p>
+        <h2>Get your place<br>in <em>the queue.</em></h2>
+        <p>Register once, get a unique token, and check your place whenever you need to. If your connection drops, we'll save your registration on this device and send it when you're back online.</p>
+        <div class="privacy-note"><span aria-hidden="true">◈</span> Your details are only used to manage your clinic visit.</div>
+      </div>
+      <form class="form-card" id="registration-form">
+        <div class="form-heading"><div><h3>Patient registration</h3><p>Fields marked <span>*</span> are required.</p></div><span class="form-step">01 <i>/ 01</i></span></div>
+        <label>Patient name <span>*</span><input name="name" autocomplete="name" maxlength="100" placeholder="Name as you'd like us to call you" required></label>
+        <div class="form-row">
+          <label>Age <span>*</span><input name="age" type="number" min="0" max="120" inputmode="numeric" placeholder="e.g. 34" required></label>
+          <label>Gender <span>*</span><select name="gender" required><option value="" disabled selected>Select one</option><option>Female</option><option>Male</option><option>Other</option><option>Prefer not to say</option></select></label>
+        </div>
+        <label>Phone number <span>*</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="For checking your token later" required></label>
+        <label>Village or address <span>*</span><input name="village" autocomplete="street-address" maxlength="120" placeholder="Your village or area" required></label>
+        <label>Choose a department <span>*</span><select name="department" id="department-select" required><option value="" disabled selected>Choose the care you need</option></select></label>
+        <button class="button button-outline qr-open" id="qr-open" type="button">▦ Scan clinic QR to choose a department</button>
+        <p class="form-footnote qr-hint">Scan a clinic QR code to preselect a department, then complete this form to register.</p>
+        <p class="form-message qr-selection" id="qr-selection" role="status" hidden></p>
+        <button class="button button-dark submit-button" type="submit">Register and get my token <span aria-hidden="true">→</span></button>
+        <p class="form-footnote">Registration is free. Please come to the clinic when your turn is approaching.</p>
+        <div class="form-message" id="registration-message" role="status" hidden></div>
+      </form>
+    </section>
+
+    <section class="section ticket-section" id="check-token">
+      <div class="section-heading">
+        <div><p class="eyebrow">ALREADY REGISTERED?</p><h2>Your token, <em>your update.</em></h2></div>
+      </div>
+      <form class="lookup-form" id="lookup-form">
+        <label>Token number<input name="token" autocomplete="off" placeholder="For example, GM-001" required></label>
+        <label>Phone number used to register<input name="phone" type="tel" autocomplete="tel" placeholder="Your registered phone number" required></label>
+        <button class="button button-dark" type="submit">Check my token <span aria-hidden="true">→</span></button>
+      </form>
+      <div id="ticket-result" class="ticket-result" aria-live="polite" hidden></div>
+    </section>
+
+    <section class="offline-banner">
+      <span class="offline-symbol" aria-hidden="true">⌁</span>
+      <div><b>Even when your signal takes a break.</b><p>This site can be installed and opened offline after your first visit. Registrations made offline will sync when your connection returns.</p></div>
+      <button class="text-link install-button" id="install-button" type="button" hidden>Install app <span aria-hidden="true">↓</span></button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand footer-brand" href="#"><span class="brand-mark" aria-hidden="true">+</span><span>community<span class="brand-light">care</span></span></a>
+    <p>A little less waiting. A little more care.</p>
+    <span>For urgent medical emergencies, contact your local emergency service.</span>
+  </footer>
+
+  <dialog class="qr-dialog" id="qr-dialog" aria-labelledby="qr-title">
+    <div class="dialog-top"><div><p class="eyebrow">QUICK REGISTRATION</p><h2 id="qr-title">Scan clinic QR</h2></div><button class="icon-button qr-close" type="button" aria-label="Close QR scanner">×</button></div>
+    <video id="qr-video" playsinline muted aria-label="Camera view for scanning a clinic QR code"></video>
+    <p class="scanner-help">Allow camera access and point it at a clinic QR code. The code only selects your department; it does not submit personal details.</p>
+    <p class="form-message qr-message" id="qr-message" role="status" hidden></p>
+    <div class="scanner-actions"><button class="button button-dark" id="qr-start" type="button">Start camera</button><button class="button button-outline" id="qr-stop" type="button" hidden>Stop camera</button></div>
+    <details class="qr-code-help"><summary>What QR codes can I scan?</summary><p>Use a QR code containing <code>COMMUNITYCARE:general</code> (replace <code>general</code> with <code>pediatrics</code>, <code>dental</code>, <code>eye</code>, or <code>women</code>), or a link to this website with a <code>department</code> parameter.</p></details>
+  </dialog>
+
+  <dialog class="staff-dialog" id="staff-dialog">
+    <div class="dialog-top"><div><p class="eyebrow">ADMIN ACCESS</p><h2>Administrator sign in</h2></div><button class="icon-button dialog-close" type="button" aria-label="Close">×</button></div>
+    <form id="staff-login-form">
+      <label>Administrator password<input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="button button-dark" type="submit">Unlock staff panel <span aria-hidden="true">→</span></button>
+      <p class="form-message" id="staff-login-message" role="status" hidden></p>
+    </form>
+    <div id="staff-dashboard" hidden>
+      <div class="staff-toolbar"><div><p class="eyebrow">ADMINISTRATOR ONLY</p><h3>Doctor &amp; admin panel</h3><p>Patient details and staff controls are private.</p></div><button class="text-link" id="staff-logout" type="button">Lock &amp; sign out</button></div>
+      <div class="staff-toolbar"><div><h3>Today's patients</h3><p>Manage your department queue.</p></div></div>
+      <div class="staff-call-row"><select id="staff-department"><option value="">All departments</option></select><button class="button button-dark" id="call-next" type="button">Call next patient →</button></div>
+      <div class="staff-call-result" id="staff-call-result" role="status" hidden></div>
+      <div class="patient-table-wrap"><table class="patient-table"><thead><tr><th>Token / patient</th><th>Department</th><th>Contact</th><th>Status</th><th></th></tr></thead><tbody id="patient-rows"></tbody></table></div>
+      <p class="form-message" id="staff-message" role="status" hidden></p>
+      <section class="camp-admin">
+        <div class="staff-toolbar"><div><h3>Health camp schedule</h3><p>Only publish confirmed dates and locations.</p></div></div>
+        <form id="camp-form" class="camp-form">
+          <label>Camp name<input name="title" maxlength="100" required placeholder="Community health camp"></label>
+          <label>Date<input name="date" type="date" required></label>
+          <label>Location<input name="location" maxlength="160" required placeholder="Confirmed address or venue"></label>
+          <label>Details (optional)<input name="details" maxlength="500" placeholder="Services or arrival information"></label>
+          <button class="button button-dark" type="submit">Publish camp</button>
+        </form>
+        <div class="patient-table-wrap"><table class="patient-table"><thead><tr><th>Camp</th><th>Date</th><th>Location</th><th></th></tr></thead><tbody id="camp-rows"></tbody></table></div>
+        <p class="form-message" id="camp-message" role="status" hidden></p>
+      </section>
+    </div>
+  </dialog>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
